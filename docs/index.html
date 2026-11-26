@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es-PE">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+ <meta name="theme-color" content="#9f1632"><meta name="description" content="Bandeja semanal de intervención preventiva para asesores MYPE. Demostración con cartera ficticia de La Libertad.">
+ <title>Pulso Preventivo · Bandeja del asesor</title><link rel="icon" href="simbolo.png"><link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<a class="skip" href="#principal">Ir al contenido</a>
+<div class="shell">
+ <aside class="rail">
+  <img class="logo" src="marca.png" alt="Pulso Preventivo">
+  <nav aria-label="Navegación principal">
+   <button data-view="bandeja" aria-current="page"><i data-icon="inbox"></i>Bandeja semanal</button>
+   <button data-view="gestiones"><i data-icon="checks"></i>Gestiones</button>
+   <button data-view="revision"><i data-icon="review"></i>Revisión de datos</button>
+   <button data-view="ensayo"><i data-icon="chart"></i>Evaluación del modelo</button>
+  </nav>
+  <div class="railbottom"><a href="manual.pdf" target="_blank" rel="noopener"><i data-icon="book"></i>Manual de uso</a><button id="team"><i data-icon="key"></i>Espacio de demo</button><span>Cajathon · RIE-03</span></div>
+ </aside>
+ <main id="principal">
+  <header><div><span class="context">Cartera MYPE <b>/</b> La Libertad</span></div><span class="demo"><span></span> Datos ficticios</span></header>
+  <div class="intro"><div><p class="kicker">GESTIÓN PREVENTIVA</p><h1 id="title">Bandeja semanal</h1><p id="desc">Elige a quién contactar antes del próximo vencimiento.</p></div><div class="datebox" id="datebox"></div></div>
+  <section class="filters" id="filters" aria-label="Filtros de la bandeja">
+   <label>Asesor<select id="asesor" aria-label="Asesor"></select></label>
+   <label>Semana del<select id="corte" aria-label="Semana del corte"></select></label>
+   <label>Cupo<select id="cupo" aria-label="Cupo de clientes"></select></label>
+   <label>Método<select id="metodo" aria-label="Método de priorización"><option value="modelo">Modelo Pulso</option><option value="regla">Regla de última cuota</option></select></label>
+  </section>
+  <div id="status" role="status" aria-live="polite">Conectando con la cartera…</div>
+  <div id="content" aria-busy="true"></div>
+  <footer><span>Pulso Preventivo</span><span>Prototipo del equipo · Decisión a cargo del asesor</span></footer>
+ </main>
+</div>
+<dialog id="detail" aria-labelledby="detailTitle"><div class="dlghead"><div><p class="kicker">EXPEDIENTE FICTICIO</p><h2 id="detailTitle">Expediente del cliente</h2></div><button class="iconbtn" data-close aria-label="Cerrar expediente">×</button></div><div id="detailBody"></div></dialog>
+<dialog id="space" aria-labelledby="spaceTitle"><div class="dlghead"><h2 id="spaceTitle">Espacio de demo</h2><button class="iconbtn" data-close aria-label="Cerrar espacio">×</button></div><p>Tus gestiones se guardan en la nube. Para abrirlas en otro equipo, ingresa allí este código. Quien lo tenga podrá consultar y registrar gestiones de este espacio.</p><label>Código del espacio<input id="spacecode" autocomplete="off" spellcheck="false" maxlength="32"></label><div class="actions"><button id="copycode" class="light">Copiar código</button><button id="usespace" class="primary">Abrir espacio</button></div><p id="spaceMsg" role="status"></p></dialog>
+<script type="module" src="app.js"></script>
+</body></html>

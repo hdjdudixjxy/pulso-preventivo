@@ -61,7 +61,10 @@ async function route(request, db) {
   const imp=path.match(/^\/api\/importar\/(\d+)$/);
   if(imp && request.method==='POST') return seed(request,db,Number(imp[1]));
   if(path==='/api/estado' && request.method==='GET'){
-    const r=await db.prepare('SELECT COUNT(*) AS cargados FROM importaciones').first();
+    const r=await db.prepare(`SELECT (SELECT COUNT(*) FROM importaciones) AS cargados,
+      (SELECT COUNT(*) FROM clientes) AS clientes,(SELECT COUNT(*) FROM creditos) AS creditos,
+      (SELECT COUNT(*) FROM cronogramas) AS cronogramas,(SELECT COUNT(*) FROM cuotas) AS cuotas,
+      (SELECT COUNT(*) FROM abonos) AS abonos,(SELECT COUNT(*) FROM semanas) AS semanas`).first();
     return json({...r,lotes:MANIFEST.length});
   }
   if(path==='/api/inicio' && request.method==='GET'){
@@ -114,7 +117,8 @@ async function route(request, db) {
   check(list.some(x=>x.credito===credito && x.cuota===cuota),'La obligación ya no está en la bandeja.',409);
   await db.prepare(`INSERT INTO gestiones(espacio,cliente_id,credito_id,numero,corte,fecha_accion,accion,seguimiento,nota,asesor_id)
     SELECT ?,?,?,?,?,?,?,?,?,? WHERE (SELECT COUNT(*) FROM gestiones WHERE espacio=? AND corte=? AND asesor_id=?)<10
-    AND NOT EXISTS(SELECT 1 FROM gestiones WHERE espacio=? AND cliente_id=? AND fecha_accion>? AND fecha_accion<date(?,'+28 days'))
+    AND NOT EXISTS(SELECT 1 FROM gestiones WHERE espacio=? AND cliente_id=?
+      AND fecha_accion>date(?,'-28 days') AND fecha_accion<date(?,'+28 days'))
     ON CONFLICT(espacio,corte,cliente_id) DO NOTHING`)
     .bind(espacio,a.cliente,credito,cuota,corte,corte,body.accion,seguimiento,nota,asesor,espacio,corte,asesor,espacio,a.cliente,corte,corte).run();
   const saved=await db.prepare('SELECT accion,seguimiento,nota,credito_id,numero FROM gestiones WHERE espacio=? AND corte=? AND cliente_id=?').bind(espacio,corte,a.cliente).first();
