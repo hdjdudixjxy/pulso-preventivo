@@ -1,0 +1,221 @@
+{
+  "periodos": {
+    "entrenamiento": [
+      "2023-01-02",
+      "2024-12-30"
+    ],
+    "validacion": [
+      "2025-03-10",
+      "2025-12-22"
+    ],
+    "prueba": [
+      "2026-03-02",
+      "2026-09-21"
+    ]
+  },
+  "cupo": 10,
+  "semilla": 731,
+  "seleccion": "Árboles potenciados",
+  "iteraciones_red": 47,
+  "entrenamiento": {
+    "filas": 52976,
+    "positivas": 2949,
+    "clientes": 974
+  },
+  "validacion": {
+    "Última cuota": {
+      "llamadas": 1640,
+      "aciertos": 204,
+      "falsas": 1435,
+      "repeticiones": 1,
+      "episodios_alcanzables": 601,
+      "precision": 0.12439024390243902,
+      "cobertura": 0.33943427620632277,
+      "dias_mediana": 17.0,
+      "precision_media_AP": 0.11102830332623968,
+      "semanas": 42
+    },
+    "Logística": {
+      "llamadas": 1640,
+      "aciertos": 208,
+      "falsas": 1431,
+      "repeticiones": 1,
+      "episodios_alcanzables": 601,
+      "precision": 0.12682926829268293,
+      "cobertura": 0.34608985024958405,
+      "dias_mediana": 13.0,
+      "precision_media_AP": 0.1424332856726156,
+      "semanas": 42
+    },
+    "Árboles potenciados": {
+      "llamadas": 1640,
+      "aciertos": 252,
+      "falsas": 1383,
+      "repeticiones": 5,
+      "episodios_alcanzables": 601,
+      "precision": 0.15365853658536585,
+      "cobertura": 0.4193011647254576,
+      "dias_mediana": 13.5,
+      "precision_media_AP": 0.17664628195790344,
+      "semanas": 42
+    },
+    "Red neuronal": {
+      "llamadas": 1640,
+      "aciertos": 240,
+      "falsas": 1397,
+      "repeticiones": 3,
+      "episodios_alcanzables": 601,
+      "precision": 0.14634146341463414,
+      "cobertura": 0.39933444259567386,
+      "dias_mediana": 10.0,
+      "precision_media_AP": 0.1702688886432362,
+      "semanas": 42
+    }
+  },
+  "prueba": {
+    "Última cuota": {
+      "llamadas": 1150,
+      "aciertos": 156,
+      "falsas": 993,
+      "repeticiones": 1,
+      "episodios_alcanzables": 466,
+      "precision": 0.1356521739130435,
+      "cobertura": 0.33476394849785407,
+      "dias_mediana": 16.0,
+      "precision_media_AP": 0.1143789675759346,
+      "semanas": 30
+    },
+    "Logística": {
+      "llamadas": 1150,
+      "aciertos": 156,
+      "falsas": 994,
+      "repeticiones": 0,
+      "episodios_alcanzables": 466,
+      "precision": 0.1356521739130435,
+      "cobertura": 0.33476394849785407,
+      "dias_mediana": 14.0,
+      "precision_media_AP": 0.15358806610193954,
+      "semanas": 30
+    },
+    "Árboles potenciados": {
+      "llamadas": 1150,
+      "aciertos": 186,
+      "falsas": 962,
+      "repeticiones": 2,
+      "episodios_alcanzables": 466,
+      "precision": 0.1617391304347826,
+      "cobertura": 0.39914163090128757,
+      "dias_mediana": 14.0,
+      "precision_media_AP": 0.1875183434087363,
+      "semanas": 30,
+      "grupos": {
+        "Micro": {
+          "llamadas": 556,
+          "aciertos": 97,
+          "falsas": 458,
+          "repeticiones": 1,
+          "episodios_alcanzables": 249,
+          "precision": 0.17446043165467626,
+          "cobertura": 0.3895582329317269,
+          "dias_mediana": 15.0,
+          "obligaciones_corte": 11996,
+          "historial_breve": 3402,
+          "fuente_pendiente": 487
+        },
+        "Pequeña": {
+          "llamadas": 594,
+          "aciertos": 89,
+          "falsas": 504,
+          "repeticiones": 1,
+          "episodios_alcanzables": 217,
+          "precision": 0.14983164983164984,
+          "cobertura": 0.41013824884792627,
+          "dias_mediana": 14.0,
+          "obligaciones_corte": 15059,
+          "historial_breve": 3669,
+          "fuente_pendiente": 629
+        },
+        "Estacional": {
+          "llamadas": 312,
+          "aciertos": 50,
+          "falsas": 262,
+          "repeticiones": 0,
+          "episodios_alcanzables": 131,
+          "precision": 0.16025641025641027,
+          "cobertura": 0.3816793893129771,
+          "dias_mediana": 15.0,
+          "obligaciones_corte": 7464,
+          "historial_breve": 2069,
+          "fuente_pendiente": 317
+        },
+        "Regular": {
+          "llamadas": 838,
+          "aciertos": 136,
+          "falsas": 700,
+          "repeticiones": 2,
+          "episodios_alcanzables": 335,
+          "precision": 0.162291169451074,
+          "cobertura": 0.4059701492537313,
+          "dias_mediana": 14.0,
+          "obligaciones_corte": 19591,
+          "historial_breve": 5002,
+          "fuente_pendiente": 799
+        },
+        "Menos de un año": {
+          "llamadas": 676,
+          "aciertos": 109,
+          "falsas": 566,
+          "repeticiones": 1,
+          "episodios_alcanzables": 348,
+          "precision": 0.16124260355029585,
+          "cobertura": 0.3132183908045977,
+          "dias_mediana": 16.0,
+          "obligaciones_corte": 19693,
+          "historial_breve": 7071,
+          "fuente_pendiente": 819
+        },
+        "Desde un año": {
+          "llamadas": 474,
+          "aciertos": 78,
+          "falsas": 396,
+          "repeticiones": 0,
+          "episodios_alcanzables": 123,
+          "precision": 0.16455696202531644,
+          "cobertura": 0.6341463414634146,
+          "dias_mediana": 9.0,
+          "obligaciones_corte": 7362,
+          "historial_breve": 0,
+          "fuente_pendiente": 297
+        }
+      }
+    },
+    "Red neuronal": {
+      "llamadas": 1150,
+      "aciertos": 176,
+      "falsas": 973,
+      "repeticiones": 1,
+      "episodios_alcanzables": 466,
+      "precision": 0.15304347826086956,
+      "cobertura": 0.3776824034334764,
+      "dias_mediana": 14.0,
+      "precision_media_AP": 0.18427099463508156,
+      "semanas": 30
+    }
+  },
+  "estados_prueba": {
+    "evaluable": 18868,
+    "historial breve": 7071,
+    "fuente pendiente": 1116
+  },
+  "prevalencia_obligacion_corte": 0.05453678185287259,
+  "base": {
+    "clientes": 1200,
+    "asesores": 4,
+    "productos": 2,
+    "creditos": 4376,
+    "cronogramas": 5075,
+    "cuotas": 82494,
+    "abonos": 70938,
+    "incidencias_fuente": 104
+  }
+}

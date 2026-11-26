@@ -1,0 +1,10 @@
+dist/
+.salidas/
+__pycache__/
+*.pyc
+.venv/
+*.sqlite
+.env*
+.dev.vars*
+.openai/local*
+
