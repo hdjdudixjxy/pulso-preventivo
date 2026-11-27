@@ -37,7 +37,7 @@ node scripts/compilar.mjs
 node scripts/local.mjs .salidas/web.sqlite
 ```
 
-Abre http://127.0.0.1:4173. Para una reproducción independiente usa `python motor/pulso.py demo --dir otra-carpeta` con la semilla predeterminada 731. El importador del modelo carga el artefacto propio distribuido en este repositorio.
+Abre http://127.0.0.1:4173. Las pruebas del motor se ejecutan con `python -m unittest` desde `motor/` y las del servicio con `node --test api/worker.test.mjs`, sobre una cartera mínima en memoria. Para una reproducción independiente usa `python motor/pulso.py demo --dir otra-carpeta` con la semilla predeterminada 731. El importador del modelo carga el artefacto propio distribuido en este repositorio.
 
 ## Publicación y datos
 
@@ -47,5 +47,5 @@ La preparación genera el manifiesto de lotes y las cargas comprimidas en `.sali
 
 ## Evidencia
 
-La prueba temporal reservó 30 semanas (marzo a septiembre de 2026), con 1.150 contactos por método: 186 episodios únicos anticipados por el modelo, frente a 156 con la regla. La mediana de anticipación fue de 14 y 16 días, respectivamente. El modelo dejó 962 falsas alertas y 2 repeticiones. El estudio simula detección y no mide el efecto de llamar al cliente. [Resultados completos](motor/resultados.json) · [SBS, créditos directos por tipo y situación, septiembre de 2026](https://intranet2.sbs.gob.pe/estadistica/financiera/2026/Setiembre/C-1228-se2026.XLS)
+La prueba temporal reservó 30 semanas (marzo a septiembre de 2026), con 1.150 contactos por método: 186 episodios únicos anticipados por el modelo, frente a 156 con la regla. La mediana de anticipación fue de 14 y 16 días, respectivamente. El modelo dejó 962 falsas alertas y 2 repeticiones. El estudio simula detección y no mide el efecto de llamar al cliente. [Resultados completos](motor/resultados.json) · [Contraste y desgloses](motor/contraste.json) · [Casos verificados](motor/casos_verificados.csv) · [SBS, créditos directos por tipo y situación, septiembre de 2026](https://intranet2.sbs.gob.pe/estadistica/financiera/2026/Setiembre/C-1228-se2026.XLS)
 
