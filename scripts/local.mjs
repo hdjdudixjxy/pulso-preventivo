@@ -2,25 +2,13 @@ import http from 'node:http';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { DatabaseSync } from 'node:sqlite';
 import worker from '../dist/server/index.js';
+import { d1 } from './d1local.mjs';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const file=process.argv[2]||'.salidas/web.sqlite';
 await fs.access(file);
-const sql=new DatabaseSync(file);
-sql.exec('PRAGMA foreign_keys=ON');
-class Statement {
-  constructor(query,params=[]){this.statement=sql.prepare(query);this.params=params;}
-  bind(...params){this.params=params;return this;}
-  first(){return this.statement.get(...this.params)??null;}
-  all(){return {results:this.statement.all(...this.params)};}
-  run(){return this.statement.run(...this.params);}
-}
-const db={
-  prepare(query){return new Statement(query);},
-  batch(statements){sql.exec('BEGIN');try{const out=statements.map(s=>s.statement.columns().length?s.all():s.run());sql.exec('COMMIT');return out;}catch(e){sql.exec('ROLLBACK');throw e;}}
-};
+const db=d1(file);
 const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.png':'image/png','.pdf':'application/pdf'};
 const server=http.createServer(async(req,res)=>{
   try{

@@ -43,8 +43,8 @@ function listSql(method) {
   return `WITH candidatas AS (
     SELECT a.*, ROW_NUMBER() OVER(PARTITION BY a.cliente ORDER BY ${order}) AS preferida
     FROM candidatos a WHERE a.corte=? AND a.asesor=? AND NOT EXISTS (
-      SELECT 1 FROM gestiones g WHERE g.espacio=? AND g.cliente_id=a.cliente
-      AND g.fecha_accion<a.corte AND g.fecha_accion>date(a.corte,'-28 days')))
+      SELECT 1 FROM gestiones g WHERE g.espacio=? AND g.cliente_id=a.cliente AND g.corte<>a.corte
+      AND g.fecha_accion>date(a.corte,'-28 days') AND g.fecha_accion<date(a.corte,'+28 days')))
     SELECT a.cliente,a.credito,a.cuota,a.segmento,a.producto,a.vence,a.pendiente,a.habitual,a.reciente,
            a.estacional,g.accion FROM candidatas a LEFT JOIN gestiones g ON g.espacio=? AND g.cliente_id=a.cliente AND g.corte=a.corte
     WHERE a.preferida=1 ORDER BY ${order} LIMIT ?`;
@@ -92,6 +92,7 @@ async function route(request, db) {
   check(a,'Expediente fuera de este corte o asesor.',404);
   if(path==='/api/resultado' && request.method==='GET'){
     const fin=await db.prepare("SELECT valor FROM metadata WHERE clave='observado_hasta'").first();
+    check(fin && day(fin.valor),'La cartera no indica hasta qué fecha se observaron los pagos.',503);
     const end = new Date(Date.parse(corte)+60*86400000).toISOString().slice(0,10);
     return json(end>fin.valor?{completo:false,hasta:fin.valor,fin:end}:{completo:true,evento:a.evento,fin:end});
   }
@@ -113,6 +114,10 @@ async function route(request, db) {
   const nota=typeof body.nota==='string'?body.nota.trim():'';
   const seguimiento=body.seguimiento||null;
   check(nota.length>0 && nota.length<=300 && (!seguimiento || (day(seguimiento) && seguimiento>=corte)),'Revisa la nota (1 a 300 caracteres) y la fecha de seguimiento.');
+  const paused=await db.prepare(`SELECT corte FROM gestiones WHERE espacio=? AND cliente_id=? AND corte<>?
+    AND fecha_accion>date(?,'-28 days') AND fecha_accion<date(?,'+28 days') ORDER BY fecha_accion LIMIT 1`)
+    .bind(espacio,a.cliente,corte,corte,corte).first();
+  check(!paused,'El cliente está en pausa de 28 días por la gestión registrada en el corte del '+paused?.corte+'.',409);
   const list=(await queue().all()).results;
   check(list.some(x=>x.credito===credito && x.cuota===cuota),'La obligación ya no está en la bandeja.',409);
   await db.prepare(`INSERT INTO gestiones(espacio,cliente_id,credito_id,numero,corte,fecha_accion,accion,seguimiento,nota,asesor_id)

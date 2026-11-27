@@ -1,0 +1,113 @@
+{
+  "semilla": 1937,
+  "modelo_congelado": "Árboles potenciados",
+  "clientes": 1200,
+  "desglose_cartera_principal_evaluable": {
+    "Cuatro últimas cuotas al día": {
+      "llamadas": 154,
+      "aciertos": 24,
+      "falsas": 130,
+      "repeticiones": 0,
+      "episodios_alcanzables": 78,
+      "precision": 0.15584415584415584,
+      "cobertura": 0.3076923076923077,
+      "dias_mediana": 2.0
+    },
+    "Alguna de las cuatro últimas cuotas tardía": {
+      "llamadas": 996,
+      "aciertos": 162,
+      "falsas": 832,
+      "repeticiones": 2,
+      "episodios_alcanzables": 251,
+      "precision": 0.16265060240963855,
+      "cobertura": 0.6454183266932271,
+      "dias_mediana": 16.0
+    },
+    "Cronograma original": {
+      "llamadas": 1041,
+      "aciertos": 165,
+      "falsas": 875,
+      "repeticiones": 1,
+      "episodios_alcanzables": 294,
+      "precision": 0.1585014409221902,
+      "cobertura": 0.5612244897959183,
+      "dias_mediana": 15.0
+    },
+    "Cronograma modificado": {
+      "llamadas": 109,
+      "aciertos": 21,
+      "falsas": 87,
+      "repeticiones": 1,
+      "episodios_alcanzables": 39,
+      "precision": 0.1926605504587156,
+      "cobertura": 0.5384615384615384,
+      "dias_mediana": 9.0
+    }
+  },
+  "escenario_exploratorio_minimo_7_dias_cartera_principal": {
+    "regla": {
+      "llamadas": 1150,
+      "aciertos": 145,
+      "falsas": 1005,
+      "repeticiones": 0,
+      "episodios_alcanzables": 466,
+      "precision": 0.12608695652173912,
+      "cobertura": 0.3111587982832618,
+      "dias_mediana": 18.0,
+      "cuatro_ultimas_al_dia": {
+        "llamadas": 39,
+        "aciertos": 1,
+        "falsas": 38,
+        "repeticiones": 0,
+        "episodios_alcanzables": 78,
+        "precision": 0.02564102564102564,
+        "cobertura": 0.01282051282051282,
+        "dias_mediana": 13.0
+      }
+    },
+    "modelo": {
+      "llamadas": 1150,
+      "aciertos": 158,
+      "falsas": 992,
+      "repeticiones": 0,
+      "episodios_alcanzables": 466,
+      "precision": 0.1373913043478261,
+      "cobertura": 0.33905579399141633,
+      "dias_mediana": 19.5,
+      "cuatro_ultimas_al_dia": {
+        "llamadas": 121,
+        "aciertos": 9,
+        "falsas": 112,
+        "repeticiones": 0,
+        "episodios_alcanzables": 78,
+        "precision": 0.0743801652892562,
+        "cobertura": 0.11538461538461539,
+        "dias_mediana": 25.0
+      }
+    }
+  },
+  "regla": {
+    "llamadas": 1170,
+    "aciertos": 157,
+    "falsas": 1011,
+    "repeticiones": 2,
+    "episodios_alcanzables": 521,
+    "precision": 0.13418803418803418,
+    "cobertura": 0.30134357005758156,
+    "dias_mediana": 17.0,
+    "precision_media_AP": 0.11773630333123516,
+    "semanas": 30
+  },
+  "seleccionado": {
+    "llamadas": 1170,
+    "aciertos": 195,
+    "falsas": 972,
+    "repeticiones": 3,
+    "episodios_alcanzables": 521,
+    "precision": 0.16666666666666666,
+    "cobertura": 0.3742802303262956,
+    "dias_mediana": 11.0,
+    "precision_media_AP": 0.18932112731363326,
+    "semanas": 30
+  }
+}
